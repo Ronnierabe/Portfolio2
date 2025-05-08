@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #1f1f1f;
+      color: white;
+      padding: 1em 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #222;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #f0f0f0;
+    }
+
+    button {
+      background-color: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+      animation: slideDown 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } 
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #333;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    form button {
+      width: 100%;
+      font-size: 1em;
+    }
+
+    #scrollTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #scrollTop:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#education">Education</a>
+      <a href="#trainings">Trainings</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Job Experience</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <section id="profile">
+    <h2>Profile</h2>
+    <div class="card">
+      <p>Hello! I am Ronnie Rabe, a front-end developer passionate about clean design and user-friendly websites.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <p>Diploma in Computer Engineering Technology.</p>
+    </div>
+  </section>
+
+  <section id="trainings">
+    <h2>Trainings & Seminars</h2>
+    <div class="card">
+      <p>Fire and Safety Training(2020)</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <p>Portfolio Website</p>
+      <button onclick="openModal()">View Details</button>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Job Experience</h2>
+    <div class="card">
+      <p>BFP Intern (80HRS)</p>
+    </div>
+  </section>
+
+  <section id="contact">
+  <h2>Contacts</h2>
+  <div class="card">
+    <p><strong>Facebook:</strong> 
+     <a href="https://www.facebook.com/ronnie.rabe.2024" target="_blank">Ronnie Rabe</a>
+    </p>
+    <p><strong>Email:</strong> 
+      <a href="mailto:rnnrabe@gmail.com">rnnrabe@gmail.com</a>
+    </p>
+  </div>
+
+</section>
+
+  <!-- Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Portfolio Website</h3>
+      <p>This project is a single-page personal portfolio showcasing my skills and past work using HTML, CSS, and JavaScript.</p>
+    </div>
+  </div>
+
+  <!-- Scroll-to-Top -->
+  <button id="scrollTop" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // Modal control
+    function openModal() {
+      document.getElementById('projectModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').style.display = 'none';
+    }
+
+    // Contact form validation
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+      alert("Message sent successfully!");
+      return true;
+    }
+
+    // Scroll-to-top button
+    const scrollBtn = document.getElementById("scrollTop");
+    window.onscroll = function () {
+      scrollBtn.style.display = window.scrollY > 100 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
